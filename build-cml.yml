@@ -36,15 +36,19 @@
     - name: Refresh Inventory
       meta: refresh_inventory
 
-- name: Start unmanaged nodes
-  hosts: external_connector:unmanaged_switch
+    - name: Pause for 1 minute
+      pause:
+        minutes: 1
+
+
+- name: Start nodes
+  hosts: external_connector:unmanaged_switch:cml_hosts
   connection: local
   gather_facts: no
   tags:
     - start
-    - network
   tasks:
-    - name: Start dumb stuff (not a judgement)
+    - name: Start Nodes
       cisco.cml.cml_node:
         name: "{{ inventory_hostname }}"
         host: "{{ cml_host }}"
@@ -52,57 +56,9 @@
         password: "{{ cml_password }}"
         lab: "{{ cml_lab }}"
         state: started
-
-- name: Start the network
-  hosts: network:&cml_hosts
-  connection: local
-  gather_facts: no
-  tags:
-    - start
-    - network
-  tasks:
-    - name: Generating day0 config
-      set_fact:
-        day0_config: "{{ lookup('template', cml_config_template) }}"
-      when: cml_config_template is defined
-
-    - name: Start Node
-      cisco.cml.cml_node:
-        name: "{{ inventory_hostname }}"
-        host: "{{ cml_host }}"
-        user: "{{ cml_username }}"
-        password: "{{ cml_password }}"
-        lab: "{{ cml_lab }}"
-        state: started
-        image_definition: "{{ cml_image_definition | default(omit) }}"
-        config: "{{ day0_config | default(omit) }}"
-
-- name: Start Systems
-  hosts: system:&cml_hosts
-  connection: local
-  gather_facts: no
-  tags:
-    - start
-    - network
-  tasks:
-    - name: Generating day0 config
-      set_fact:
-        day0_config: "{{ lookup('template', cml_config_template) }}"
-      when: cml_config_template is defined
-
-    - name: Start Node
-      cisco.cml.cml_node:
-        name: "{{ inventory_hostname }}"
-        host: "{{ cml_host }}"
-        user: "{{ cml_username }}"
-        password: "{{ cml_password }}"
-        lab: "{{ cml_lab }}"
-        state: started
-        image_definition: "{{ cml_image_definition | default(omit) }}"
-        config: "{{ day0_config | default(omit) }}"
 
 - name: Check initial topology connectivity
-  hosts: hq_routers
+  hosts: csr1000v-0
   connection: local
   tags:
     - network

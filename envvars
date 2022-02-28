@@ -1,1 +1,5 @@
-export ANSIBLE_PYTHON_INTERPRETER=${VIRTUAL_ENV}/bin/python
+export CML_HOST=<your-cml-host>
+export CML_USERNAME=<your-username>
+export CML_PASSWORD=<your-password>
+export CML_LAB=<your-labname>
+
