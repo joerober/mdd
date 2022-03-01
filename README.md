@@ -1,5 +1,5 @@
 # CIDR DevOps Workshop 2 - Session 1 Hands-On Lab
-In this lab we will using Infrastructure as Code to deploy a basic lab in Cisco Modeling Labs.  We will be doing this by using a small part or the Model Driven DevOps repo which we will learn about later. 
+In this lab we will using Infrastructure as Code to deploy a basic lab in Cisco Modeling Labs.  We will be doing this by using a small part of the Model Driven DevOps repo which we will learn about later. 
 
 ### Clone the repo from the workshop branch.  
 By cloning the workshop branch of the repo we will be pulling in everything we need to run the ansible playbook that will deploy our lab.  You can clone the repo with the folowing command:
