@@ -38,12 +38,6 @@ Now that we have our basic requirements installed we will install the ansible mo
 ```
 ansible-galaxy collection install -r requirements.yml
 ```
-### Deactivate/reactivate venv
-This step isn't always necessary but it serves two purposes for our lab.  First, it works as a reboot for our virtual environment that will clear up any conficting paths with our local environment.  Second, it teaches us how to move in and out of our virtual environments.  The commands below should be run individually.  
-```
-deactivate
-. ./venv-mdd/bin/activate
-```
 
 ### Run the playbook
 Now it's time to build our CML lab!  Run the playbook with the command below, it will take a few minutes to set everything up.  I recommend navigating to your cml host in your browser so you can watch your lab build.  Just don't touch anything until the playbook completes.  
@@ -66,3 +60,15 @@ Now that our lab is built and tested, it's time to remove the lab to free up CML
 ansible-playbook clean-cml.yml -vvv
 ```
 
+## Troubleshooting Steps
+If you get an error when you try and run the playbook initially it may be an issue with python or ansible confusing paths between your virtual and local environments.  An easy way to resolve this is to deactivate and reactivate your virtual environment, then run the Ansible Collections install again.  
+```
+deactivate
+```
+```
+. ./venv-mdd/bin/activate
+```
+```
+ansible-galaxy collection install -r requirements.yml
+```
+Now try running the playbook again.  
