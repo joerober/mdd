@@ -11,6 +11,8 @@ git clone --branch workshop https://github.com/model-driven-devops/mdd.git
 Once the repo is cloned you will have a new directory named "mdd".  Navigate to the mdd directory, then update your envvars file with your colabot credentials, the cml host that was provided to you by your Lab Mentor, and your lab name which should be your username for this exercise.
 ```
 cd mdd
+```
+```
 vi envvars
 ```
 
@@ -30,6 +32,8 @@ pip3 install -r requirements.txt
 We will need to source the environment variables we updated earlier so that the playbook will know where to find them.  We also want to install pip3 certifcates to avoid any ssl errors in loading the ansible collection in the next step.  Use the following commands individually to accomplish this:  
 ```
 source ./envvars
+```
+```
 pip3 install certifi
 ```
 
