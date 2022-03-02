@@ -48,7 +48,7 @@ deactivate
 ### Run the playbook
 Now it's time to build our CML lab!  Run the playbook with the command below, it will take a few minutes to set everything up.  I recommend navigating to your cml host in your browser so you can watch your lab build.  Just don't touch anything until the playbook completes.  
 ```
-ansible-playbook build-cml.yml -vvv
+ansible-playbook build-cml.yml -v
 ```
 
 ### Run the cml-inventory playbook to get the ip addresses for your devices.  
