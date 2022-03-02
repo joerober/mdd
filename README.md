@@ -8,7 +8,7 @@ git clone --branch workshop https://github.com/model-driven-devops/mdd.git
 ```
 
 ### Navigate to the mdd directory and update your variables
-Once the repo is cloned you will have a new directory named "mdd".  Navigate to the mdd directory, then update your envvars file with your colabot credentials, the cml host that was provided to you by your Lab Mentor, and your lab name (you can make this up).
+Once the repo is cloned you will have a new directory named "mdd".  Navigate to the mdd directory, then update your envvars file with your colabot credentials, the cml host that was provided to you by your Lab Mentor, and your lab name which should be your username for this exercise.
 ```
 cd mdd
 vi envvars
@@ -22,7 +22,7 @@ python3 -m venv venv-mdd
 ```
 
 ### Install python requirements via pip
-This will install the pip requirements we will need in to our virtual environment.
+This will install the python requirements that are needed to run ansible in to our virtual environment.
 ```
 pip3 install -r requirements.txt
 ```
