@@ -50,6 +50,16 @@ Now it's time to build our CML lab!  Run the playbook with the command below, it
 ```
 ansible-playbook build-cml.yml -vvv
 ```
+
+### Run the cml-inventory playbook to get the ip addresses for your devices.  
+In addition to deploying and managing your infrastructure, Ansible can be used to gather information as well.  Running this playbook will output facts about our cml lab that will help us in testing the devices. 
+```
+ansible-playbook cml-inventory.yml -v
+```
+
+### Exploration Time!
+Take some time here to look at the lab you built in the CML user interface, ssh in to one of your csrs (username: admin, password: admin), ping your other csrs from the one you are currently shelled in to.  
+
 ### Clean up your lab
 Now that our lab is built and tested, it's time to remove the lab to free up CML space for others in the CIDR community.  Since we deployed the lab with IaC, why not clean it up using a playbook as well.  Run the following command to stop, wipe, and delete you lab.  
 ```
