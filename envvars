@@ -1,5 +1,5 @@
-export CML_HOST=cpn-rtp-cml-stable1.ciscops.net
-export CML_USERNAME=schkenne
-export CML_PASSWORD=Dv1y62MnVKc}lp[UUf}M
-export CML_LAB=schkenne-mdd
+export CML_HOST=
+export CML_USERNAME=
+export CML_PASSWORD=
+export CML_LAB=
 export ANSIBLE_PYTHON_INTERPRETER=${VIRTUAL_ENV}/bin/python
