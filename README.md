@@ -1,5 +1,5 @@
 # CIDR DevOps Workshop 2 - Session 1 Hands-On Lab
-In this lab we will using Infrastructure as Code to deploy a basic lab in Cisco Modeling Labs.  We will be doing this by using a small part of the Model Driven DevOps repo which we will learn about later. 
+In this lab we will using Infrastructure as Code to deploy a basic lab in Cisco Modeling Labs which will be comprised of 3 CSRs.  We will be doing this by using a small part of the Model Driven DevOps repo which we will learn about later. 
 
 ### Clone the repo from the workshop branch.
 #### Make sure that your directory structure does not contain any spaces, otherwise you will have errors.
@@ -16,6 +16,14 @@ cd mdd
 #### You want to use single quotes around your CML password as they often have characters that might be confused with code.
 ```
 vi envvars
+```
+#### Please see sample envvars below
+```
+export CML_HOST=your-assigned-host-url
+export CML_USERNAME=jsmith
+export CML_PASSWORD='abc{k-m}"
+export CML_LAB=jsmith
+export ANSIBLE_PYTHON_INTERPRETER=${VIRTUAL_ENV}/bin/python
 ```
 
 ### Create a virtual environment to run your dependencies
@@ -40,7 +48,7 @@ pip3 install certifi
 ```
 
 ### Install Ansible Collections
-Now that we have our basic requirements installed we will install the ansible modules we will need to run the playbook.  
+Now that we have our basic requirements installed we will install the ansible modules needed to run the playbook  
 ```
 ansible-galaxy collection install -r requirements.yml
 ```
@@ -52,7 +60,7 @@ ansible-playbook build-cml.yml -v
 ```
 
 ### Run the cml-inventory playbook to get the ip addresses for your devices.  
-In addition to deploying and managing your infrastructure, Ansible can be used to gather information as well.  Running this playbook will output facts about our cml lab that will help us in testing the devices. 
+In addition to deploying and managing your infrastructure, Ansible can be used to gather information as well.  Running this playbook will output facts about our CML lab that will help us in testing the devices. 
 ```
 ansible-playbook cml-inventory.yml -v
 ```
