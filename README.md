@@ -1,7 +1,8 @@
 # CIDR DevOps Workshop 2 - Session 1 Hands-On Lab
 In this lab we will using Infrastructure as Code to deploy a basic lab in Cisco Modeling Labs.  We will be doing this by using a small part of the Model Driven DevOps repo which we will learn about later. 
 
-### Clone the repo from the workshop branch.  
+### Clone the repo from the workshop branch.
+#### Make sure that your directory structure does not contain any spaces, otherwise you will have errors.
 By cloning the workshop branch of the repo we will be pulling in everything we need to run the ansible playbook that will deploy our lab.  You can clone the repo with the folowing command:
 ```
 git clone --branch workshop https://github.com/model-driven-devops/mdd.git
@@ -12,6 +13,7 @@ Once the repo is cloned you will have a new directory named "mdd".  Navigate to 
 ```
 cd mdd
 ```
+#### You want to use single quotes around your CML password as they often have characters that might be confused with code.
 ```
 vi envvars
 ```
@@ -75,6 +77,5 @@ deactivate
 ```
 ansible-galaxy collection install -r requirements.yml
 ```
-Note:  If your CML password has braces or brackets you will want to put it in single quotes to avoid any conflicts. 
 
 Now try running the playbook again.  
