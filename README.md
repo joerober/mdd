@@ -75,4 +75,6 @@ deactivate
 ```
 ansible-galaxy collection install -r requirements.yml
 ```
+Note:  If your CML password has braces or brackets you will want to put it in single quotes to avoid any conflicts. 
+
 Now try running the playbook again.  
