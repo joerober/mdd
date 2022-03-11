@@ -21,7 +21,7 @@ vi envvars
 ```
 export CML_HOST=your-assigned-host-url
 export CML_USERNAME=jsmith
-export CML_PASSWORD='abc{k-m}"
+export CML_PASSWORD='abc{k-m}'
 export CML_LAB=jsmith
 export ANSIBLE_PYTHON_INTERPRETER=${VIRTUAL_ENV}/bin/python
 ```
