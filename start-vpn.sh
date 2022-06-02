@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-VPN_USERNAME=
-VPN_PASSWORD=
-
 echo $VPN_PASSWORD | openconnect \
 	--background \
 	--passwd-on-stdin \
