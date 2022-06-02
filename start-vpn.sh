@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo $VPN_PASSWORD | openconnect \
+echo $VPN_PASSWORD | sudo openconnect \
 	--background \
 	--passwd-on-stdin \
 	--protocol=anyconnect \
