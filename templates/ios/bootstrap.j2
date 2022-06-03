@@ -27,6 +27,11 @@ ip ssh version 2
 ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 !
+no banner exec
+no banner login
+no banner incoming
+no banner motd
+!
 line vty 0 4
 exec-timeout 30 0
 absolute-timeout 60
