@@ -231,8 +231,6 @@ nodes:
     y: -250
     configuration: |-
       hostname hq-sw1
-      no banner exec
-      no banner incoming
       vrf definition Mgmt-intf
        !
        address-family ipv4
@@ -346,8 +344,6 @@ nodes:
     y: -50
     configuration: |-
       hostname hq-sw2
-      no banner exec
-      no banner incoming
       vrf definition Mgmt-intf
        !
        address-family ipv4
@@ -461,8 +457,6 @@ nodes:
     y: -300
     configuration: |-
       hostname site-sw1
-      no banner exec
-      no banner incoming
       vrf definition Mgmt-intf
        !
        address-family ipv4
@@ -987,8 +981,6 @@ nodes:
     y: 0
     configuration: |-
       hostname site2-sw1
-      no banner exec
-      no banner incoming
       ip domain name cml.local
       !
       !
