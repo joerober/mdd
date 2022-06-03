@@ -106,6 +106,7 @@ nodes:
       negotiation auto
       no mop enabled
       no mop sysid
+      no shutdown
       !
       interface GigabitEthernet8
       vrf forwarding Mgmt-intf
@@ -118,6 +119,7 @@ nodes:
       router ospf 100
       router-id 10.255.255.1
       passive-interface Loopback0
+      default-information originate
       network 10.0.0.1 0.0.0.0 area 0
       network 10.0.0.5 0.0.0.0 area 0
       network 10.0.0.9 0.0.0.0 area 0
