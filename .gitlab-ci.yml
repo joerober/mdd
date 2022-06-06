@@ -2,47 +2,61 @@ stages:
   - clean
   - build-cml
   - build-nso
-  - sync-nso
-  - test
+  - validate
+  - update
+  - check
 
-image: ghcr.io/model-driven-devops/mdd-container:latest
+image: ghcr.io/model-driven-devops/mdd:latest
 
 variables:
-  ANSIBLE_GATHERING: "smart"
   ANSIBLE_CONFIG: "./ansible.cfg"
-  ANSIBLE_ROLES_PATH: "./roles"
-  GIT_SUBMODULE_STRATEGY: "recursive"
+  CML_VERIFY_CERT: "false"
 
 clean:
   stage: clean
   script:
-    - ansible-playbook clean-cml.yml
-#  only:
-#    changes:
-#      - files/arch2.yaml
+    - ansible-playbook cisco.cml.clean
+  only:
+    changes:
+      - files/arch3_csr.yaml.j2
+  resource_group: mdd
 
 build-cml:
   stage: build-cml
   script:
-    - ansible-playbook build-cml.yml
-#  only:
-#    changes:
-#      - files/arch2.yaml
-#
+    - ansible-playbook cisco.cml.build -e startup='host' -e wait='yes'
+  only:
+    changes:
+      - files/arch3_csr.yaml.j2
+  resource_group: mdd
+
 build-nso:
   stage: build-nso
   script:
-    - ansible-playbook build-nso.yml
-##  only:
-##    changes:
-##      - files/arch2.yaml
-##
-sync-nso:
-  stage: sync-nso
-  script:
-    - ansible-playbook sync-nso.yml
+    - ansible-playbook ciscops.mdd.nso_install
+    - ansible-playbook ciscops.mdd.nso_update_packages
+    - ansible-playbook ciscops.mdd.nso_init
+    - ansible-playbook ciscops.mdd.nso_update_devices
+  resource_group: mdd
+  only:
+    changes:
+      - files/arch3_csr.yaml.j2
 
-test:
-  stage: test
+validate:
+  stage: validate
   script:
-    - ansible-playbook check-network.yml
+    - ansible-playbook ciscops.mdd.validate
+  resource_group: mdd
+
+update:
+  stage: update
+  script:
+    - ansible-playbook ciscops.mdd.nso_sync_from
+    - ansible-playbook ciscops.mdd.update -e dry_run=no
+  resource_group: mdd
+
+check:
+  stage: check
+  script:
+    - ansible-playbook ciscops.mdd.check
+  resource_group: mdd
