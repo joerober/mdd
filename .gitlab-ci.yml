@@ -21,7 +21,7 @@ clean:
   resource_group: mdd
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
-    - if: $CI_PIPELINE_SOURCE == "api"
+    - if: $CI_PIPELINE_SOURCE == "api" && $CLEAN == "true"
 
 build-cml:
   stage: build-cml
@@ -30,7 +30,7 @@ build-cml:
   resource_group: mdd
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
-    - if: $CI_PIPELINE_SOURCE == "api"
+    - if: $CI_PIPELINE_SOURCE == "api" && $CLEAN == "true"
 
 build-nso:
   stage: build-nso
@@ -42,7 +42,7 @@ build-nso:
   resource_group: mdd
   rules:
     - if: $CI_PIPELINE_SOURCE == "web"
-    - if: $CI_PIPELINE_SOURCE == "api"
+    - if: $CI_PIPELINE_SOURCE == "api" && $CLEAN == "true"
 
 save-rollback:
   stage: save-rollback
