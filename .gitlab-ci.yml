@@ -88,11 +88,6 @@ check:
   resource_group: mdd
   when: delayed 
   start_in: 15 seconds
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "web"
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "clus22"
-    - if: $CI_PIPELINE_SOURCE == "api"
 
 load-rollback:
   stage: load-rollback
