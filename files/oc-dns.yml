@@ -1,0 +1,14 @@
+---
+mdd_data:
+  openconfig-system:system:
+    openconfig-system:dns:
+      servers:
+        server:
+          - address: '208.67.222.222'
+            config:
+              address: '208.67.222.222'
+              port: '53'  # always 53 for ios
+          - address: '8.8.8.8'
+            config:
+              address: '8.8.8.8'
+              port: '53'  # always 53 for ios
