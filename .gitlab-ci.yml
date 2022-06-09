@@ -60,6 +60,7 @@ save-rollback:
 validate:
   stage: validate
   script:
+    - yamllint mdd-data
     - ansible-playbook ciscops.mdd.validate
   resource_group: mdd
   rules:
