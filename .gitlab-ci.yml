@@ -20,7 +20,7 @@ clean:
     - ansible-playbook cisco.cml.clean
   resource_group: mdd
   rules:
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "web" && $CLEAN == "true"
     - if: $CI_PIPELINE_SOURCE == "api" && $CLEAN == "true"
 
 build-cml:
@@ -29,7 +29,7 @@ build-cml:
     - ansible-playbook cisco.cml.build -e startup='host' -e wait='yes'
   resource_group: mdd
   rules:
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "web" && $CLEAN == "true"
     - if: $CI_PIPELINE_SOURCE == "api" && $CLEAN == "true"
 
 build-nso:
@@ -41,7 +41,7 @@ build-nso:
     - ansible-playbook ciscops.mdd.nso_update_devices
   resource_group: mdd
   rules:
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "web" && $CLEAN == "true"
     - if: $CI_PIPELINE_SOURCE == "api" && $CLEAN == "true"
 
 save-rollback:
